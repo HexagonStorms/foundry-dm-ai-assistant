@@ -10,7 +10,7 @@ export class AIDMAssistant {
     }
 
     static _onRenderSidebarTab(app, html) {
-        if (app.options.id === 'chat') {
+        if (app instanceof ChatLog) {
             const button = this._createAIDMButton();
             html.find(".chat-control-icon").append(button);
         }
