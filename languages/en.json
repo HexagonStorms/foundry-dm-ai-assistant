@@ -1,0 +1,9 @@
+{
+    "AI-DM": {
+        "greeting": {
+            "title": "AI DM Assistant",
+            "content": "Hello World! I'm your AI DM Assistant.",
+            "ok": "Got it!"
+        }
+    }
+}

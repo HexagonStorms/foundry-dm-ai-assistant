@@ -1,0 +1,12 @@
+.ai-dm-button {
+    flex: 0;
+    margin: 0 6px;
+    line-height: 24px;
+    color: #BBB;
+    text-align: center;
+}
+
+.ai-dm-button:hover {
+    color: #FFF;
+    text-shadow: 0 0 8px var(--color-shadow-primary);
+}

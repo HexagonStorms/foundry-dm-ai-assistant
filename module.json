@@ -1,0 +1,28 @@
+{
+    "id": "ai-dm-assistant",
+    "title": "AI DM Assistant",
+    "description": "An AI-powered assistant for Dungeon Masters",
+    "version": "1.0.0",
+    "compatibility": {
+      "minimum": "12",
+      "verified": "12"
+    },
+    "authors": [
+      {
+        "name": "Your Name"
+      }
+    ],
+    "esmodules": [
+      "scripts/module.js"
+    ],
+    "styles": [
+      "styles/ai-dm-assistant.css"
+    ],
+    "languages": [
+      {
+        "lang": "en",
+        "name": "English",
+        "path": "languages/en.json"
+      }
+    ]
+  }
