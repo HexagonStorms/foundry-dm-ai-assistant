@@ -1,28 +1,40 @@
 {
-    "id": "ai-dm-assistant",
-    "title": "AI DM Assistant",
-    "description": "An AI-powered assistant for Dungeon Masters",
-    "version": "1.0.0",
-    "compatibility": {
-      "minimum": "12",
-      "verified": "12"
-    },
-    "authors": [
-      {
-        "name": "Your Name"
+  "id": "ai-dm-assistant",
+  "title": "AI DM Assistant",
+  "description": "An AI-powered assistant for Dungeon Masters to craft beautiful campaigns and assist with creating items, journal entries, NPCs, equipment, and more.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "authors": [
+    {
+      "name": "Josh Plaza",
+      "flags": {
+        "github": "hexagonstorms"
       }
-    ],
-    "esmodules": [
-      "scripts/module.js"
-    ],
-    "styles": [
-      "styles/ai-dm-assistant.css"
-    ],
-    "languages": [
-      {
-        "lang": "en",
-        "name": "English",
-        "path": "languages/en.json"
-      }
-    ]
+    }
+  ],
+  "esmodules": [
+    "scripts/module.js",
+    "scripts/settings.js"
+  ],
+  "styles": [
+    "styles/ai-dm-assistant.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "socket": true,
+  "url": "https://github.com/hexagonstorms/ai-dm-assistant",
+  "manifest": "https://raw.githubusercontent.com/hexagonstorms/ai-dm-assistant/main/module.json",
+  "download": "https://github.com/hexagonstorms/ai-dm-assistant/archive/v1.0.0.zip",
+  "bugs": "https://github.com/hexagonstorms/ai-dm-assistant/issues",
+  "flags": {
+    "allowBugReporter": true
   }
+}
