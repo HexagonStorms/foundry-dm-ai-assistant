@@ -15,12 +15,8 @@
       }
     }
   ],
-  "esmodules": [
-    "scripts/module.js",
-    "scripts/settings.js"
-  ],
-  "styles": [
-    "styles/ai-dm-assistant.css"
+  "scripts": [
+    "scripts/module.js"
   ],
   "languages": [
     {
