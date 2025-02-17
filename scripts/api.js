@@ -45,10 +45,36 @@ Please format your response in a way that can be used as a journal entry.`;
             }
             
             const data = await response.json();
-            return data.choices[0].message.content;
+            
+            // Extract content from the OpenAI response structure
+            const content = data.choices?.[0]?.message?.content;
+            
+            if (!content) {
+                throw new Error("No content received from OpenAI");
+            }
+
+            // Format the content for Foundry VTT journal entry
+            // Convert line breaks to HTML breaks for proper display
+            const formattedContent = this.formatContentForJournal(content);
+            
+            return formattedContent;
         } catch (error) {
             ui.notifications.error("Error generating content: " + error.message);
+            console.error("OpenAI API Error:", error);
             return null;
         }
+    }
+
+    static formatContentForJournal(content) {
+        // Convert line breaks to HTML breaks
+        // First, replace single newlines that follow a period with double newlines
+        // This helps with paragraph formatting
+        let formatted = content.replace(/\.\n(?!\n)/g, '.\n\n');
+        
+        // Then convert remaining newlines to <br> tags
+        formatted = formatted.replace(/\n/g, '<br>');
+        
+        // Wrap the content in a div for proper formatting
+        return `<div class="ai-generated-content">${formatted}</div>`;
     }
 }

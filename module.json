@@ -16,10 +16,12 @@
     }
   ],
   "scripts": [
+    "scripts/settings.js",
+    "scripts/api.js", 
     "scripts/config.js",
-    "scripts/module.js",
-    "scripts/settings.js"
-  ],
+    "scripts/dialogs.js",
+    "scripts/module.js"
+],
   "styles": [
     "styles/ai-dm.css"
   ],

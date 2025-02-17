@@ -26,26 +26,46 @@ class JournalGenerationDialog extends Dialog {
                         icon: '<i class="fas fa-magic"></i>',
                         label: "Generate",
                         callback: async (html) => {
-                            const prompt = html.find("[name=prompt]").val();
-                            const title = html.find("[name=title]").val() || prompt.split('\n')[0].substring(0, 30);
-                            const useContext = html.find("[name=useContext]").is(":checked");
-                            
-                            ui.notifications.info("Generating content...");
-                            
-                            const content = await OpenAIAPI.generateContent(prompt, useContext);
-                            
-                            if (content) {
-                                const entry = await JournalEntry.create({
+                            try {
+                                const prompt = html.find("[name=prompt]").val();
+                                if (!prompt) {
+                                    ui.notifications.error("Please enter a prompt");
+                                    return;
+                                }
+
+                                const title = html.find("[name=title]").val() || prompt.split('\n')[0].substring(0, 30);
+                                const useContext = html.find("[name=useContext]").is(":checked");
+                                
+                                ui.notifications.info("Generating content...");
+                                
+                                const content = await OpenAIAPI.generateContent(prompt, useContext);
+                                
+                                if (!content) {
+                                    throw new Error("Failed to generate content");
+                                }
+
+                                // Create the journal entry with the formatted content
+                                const journalData = {
                                     name: title,
                                     content: content,
-                                    folder: null
-                                });
+                                    folder: null,
+                                    ownership: {
+                                        default: CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED
+                                    }
+                                };
+
+                                const entry = await JournalEntry.create(journalData);
                                 
+                                if (!entry) {
+                                    throw new Error("Failed to create journal entry");
+                                }
+
                                 // Open the journal entry
                                 entry.sheet.render(true);
                                 resolve(entry);
-                            } else {
-                                reject(new Error("Failed to generate content"));
+                            } catch (error) {
+                                ui.notifications.error(error.message);
+                                reject(error);
                             }
                         }
                     },
