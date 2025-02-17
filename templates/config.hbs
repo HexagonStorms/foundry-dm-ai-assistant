@@ -1,0 +1,45 @@
+<form class="flexcol">
+    <nav class="tabs" data-group="primary">
+        <a class="item" data-tab="overview"><i class="fas fa-globe"></i> World Overview</a>
+        <a class="item" data-tab="factions"><i class="fas fa-users"></i> Factions</a>
+        <a class="item" data-tab="npcs"><i class="fas fa-user"></i> NPCs</a>
+        <a class="item" data-tab="plots"><i class="fas fa-book-open"></i> Plots</a>
+        <a class="item" data-tab="locations"><i class="fas fa-map-marker-alt"></i> Locations</a>
+    </nav>
+
+    <section class="content">
+        <div class="tab" data-tab="overview" data-group="primary">
+            <p class="notes">Describe the general overview of your campaign world, its major themes, and any crucial background information.</p>
+            <textarea name="overview" rows="20">{{overview}}</textarea>
+        </div>
+        
+        <div class="tab" data-tab="factions" data-group="primary">
+            <p class="notes">Detail the major organizations, factions, and groups that play important roles in your world.</p>
+            <textarea name="factions" rows="20">{{factions}}</textarea>
+        </div>
+
+        <div class="tab" data-tab="npcs" data-group="primary">
+            <p class="notes">List and describe important NPCs, their relationships, and their roles in the world.</p>
+            <textarea name="npcs" rows="20">{{npcs}}</textarea>
+        </div>
+
+        <div class="tab" data-tab="plots" data-group="primary">
+            <p class="notes">Outline current story arcs, plot points, and ongoing events in your campaign.</p>
+            <textarea name="plots" rows="20">{{plots}}</textarea>
+        </div>
+
+        <div class="tab" data-tab="locations" data-group="primary">
+            <p class="notes">Describe important locations, cities, dungeons, and other places of interest.</p>
+            <textarea name="locations" rows="20">{{locations}}</textarea>
+        </div>
+    </section>
+
+    <footer class="sheet-footer flexrow">
+        <button type="submit" name="submit">
+            <i class="far fa-save"></i> Save Configuration
+        </button>
+        <button type="button" class="preview-context">
+            <i class="fas fa-eye"></i> Preview Full Context
+        </button>
+    </footer>
+</form>

@@ -18,10 +18,28 @@ Hooks.once('ready', () => {
   if (game.modules.get('_dev-mode')?.api?.registerPackageDebugFlag) {
       game.modules.get('_dev-mode')?.api?.registerPackageDebugFlag(AIDMAssistant.ID);
   }
+
+  // Setup socket listeners
+  game.socket.on(`module.${AIDMAssistant.ID}`, (data) => {
+      if (!game.user.isGM) return;
+      
+      switch (data.type) {
+          case 'requestApiCall':
+              // Handle API calls
+              break;
+          case 'generateContent':
+              // Handle content generation
+              break;
+          default:
+              console.warn('AI DM Assistant | Unknown socket event:', data.type);
+      }
+  });
 });
 
 // Add a button to the scene controls
 Hooks.on('getSceneControlButtons', (controls) => {
+  if (!game.user.isGM) return;
+
   controls.push({
       name: 'ai-dm-assistant',
       title: 'AI DM Assistant',
@@ -33,9 +51,7 @@ Hooks.on('getSceneControlButtons', (controls) => {
           icon: 'fas fa-cog',
           button: true,
           onClick: () => {
-            console.log('AI DM Assistant | Configure AI Assistant | I was clicked!');
-              // TODO: Open configuration window
-              // new AIDMConfig().render(true);
+              new AIDMConfig().render(true);
           }
       }, {
           name: 'create-npc',
@@ -43,7 +59,7 @@ Hooks.on('getSceneControlButtons', (controls) => {
           icon: 'fas fa-user',
           button: true,
           onClick: () => {
-              console.log('AI DM Assistant | Generate NPC | I was clicked!');
+              // TODO: Create NPC generation dialog
           }
       }, {
           name: 'create-item',
@@ -51,7 +67,7 @@ Hooks.on('getSceneControlButtons', (controls) => {
           icon: 'fas fa-crown',
           button: true,
           onClick: () => {
-              console.log('AI DM Assistant | Generate Item | I was clicked!');
+              // TODO: Create item generation dialog
           }
       }]
   });
@@ -65,27 +81,15 @@ Hooks.on('renderJournalDirectory', (app, html, data) => {
       <i class="fas fa-magic"></i> AI Assist
   </button>`);
   
-  button.click(() => {
-      // TODO: Open journal entry generation dialog
-      console.log('AI DM Assistant | Journal Entry Generation | I was clicked!');
+  button.click(async () => {
+      try {
+          await JournalGenerationDialog.create();
+      } catch (error) {
+          if (error.message !== "Cancelled" && error.message !== "Closed") {
+              ui.notifications.error(error.message);
+          }
+      }
   });
 
   html.find('.directory-header .header-actions').append(button);
-});
-
-// Handle socket events for client-server communication
-game.socket.on(`module.${AIDMAssistant.ID}`, (data) => {
-  if (!game.user.isGM) return;
-  
-  // TODO: Handle different socket events
-  switch (data.type) {
-      case 'requestApiCall':
-          // Handle API calls
-          break;
-      case 'generateContent':
-          // Handle content generation
-          break;
-      default:
-          console.warn('AI DM Assistant | Unknown socket event:', data.type);
-  }
 });

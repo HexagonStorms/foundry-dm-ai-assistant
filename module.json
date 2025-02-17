@@ -16,8 +16,12 @@
     }
   ],
   "scripts": [
+    "scripts/config.js",
     "scripts/module.js",
     "scripts/settings.js"
+  ],
+  "styles": [
+    "styles/ai-dm.css"
   ],
   "languages": [
     {
