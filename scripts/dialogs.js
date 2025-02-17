@@ -44,11 +44,16 @@ class JournalGenerationDialog extends Dialog {
                                     throw new Error("Failed to generate content");
                                 }
 
-                                // Create the journal entry with the formatted content
+                                // Create the journal entry with a text page
                                 const journalData = {
                                     name: title,
-                                    content: content,
-                                    folder: null,
+                                    pages: [{
+                                        type: "text",
+                                        name: title,
+                                        text: {
+                                            content: content
+                                        }
+                                    }],
                                     ownership: {
                                         default: CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED
                                     }
