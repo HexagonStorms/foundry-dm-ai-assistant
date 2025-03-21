@@ -14,13 +14,8 @@ class OpenAIAPI {
 
         const maxTokens = game.settings.get(AIDMAssistant.ID, AIDMAssistant.SETTINGS.MAX_TOKENS);
 
-        const fullPrompt = `You are a creative writing assistant helping a Game Master create content for their roleplaying game.
-        
-${worldContext}
-Request:
-${prompt}
-
-Please format your response in a way that can be used as a journal entry.`;
+        const fullPrompt = `You are a creative writing assistant helping a Game Master create content for their roleplaying game. ${worldContext} 
+        Request: ${prompt} Please format your response in a way that can be used as a journal entry.`;
 
         try {
             const response = await fetch('https://api.openai.com/v1/chat/completions', {
