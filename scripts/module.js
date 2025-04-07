@@ -78,12 +78,12 @@ Hooks.on('renderJournalDirectory', (app, html, data) => {
   if (!game.user.isGM) return;
 
   const button = $(`<button class="ai-assist-btn">
-      <i class="fas fa-magic"></i> AI Assist
+      <i class="fas fa-robot"></i> AI Create
   </button>`);
   
   button.click(async () => {
       try {
-          await JournalGenerationDialog.create();
+          await CreationOptionsDialog.create();
       } catch (error) {
           if (error.message !== "Cancelled" && error.message !== "Closed") {
               ui.notifications.error(error.message);

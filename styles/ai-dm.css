@@ -58,3 +58,38 @@
 .ai-generated-content br + br {
     margin: 1em 0;
 }
+
+/* Creation Options Dialog */
+.ai-dm-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.ai-dm-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ai-dm-option:hover {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.ai-dm-option i {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.dialog .dialog-buttons {
+    margin-top: 10px;
+}
