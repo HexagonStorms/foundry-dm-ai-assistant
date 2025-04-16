@@ -5,6 +5,7 @@ class AIDMAssistant {
         OPENAI_KEY: 'openai-api-key',
         ANTHROPIC_KEY: 'anthropic-api-key',
         GOOGLE_KEY: 'google-api-key',
+        DEEPSEEK_KEY: 'deepseek-api-key',
         MODEL_PROVIDER: 'model-provider',
         WORLD_OVERVIEW: 'world-overview',
         MAJOR_FACTIONS: 'major-factions',
@@ -48,6 +49,26 @@ class AIDMAssistant {
             restricted: true
         });
         
+        game.settings.register(this.ID, this.SETTINGS.GOOGLE_KEY, {
+            name: "Google API Key",
+            hint: "Your Google API key for Gemini models",
+            scope: "world",
+            config: true,
+            type: String,
+            default: "",
+            restricted: true
+        });
+        
+        game.settings.register(this.ID, this.SETTINGS.DEEPSEEK_KEY, {
+            name: "DeepSeek API Key",
+            hint: "Your DeepSeek API key",
+            scope: "world",
+            config: true,
+            type: String,
+            default: "",
+            restricted: true
+        });
+        
         game.settings.register(this.ID, this.SETTINGS.MODEL_PROVIDER, {
             name: "AI Model Provider",
             hint: "Select which AI model to use for content generation",
@@ -56,7 +77,9 @@ class AIDMAssistant {
             type: String,
             choices: {
                 "openai": "OpenAI (GPT)",
-                "claude": "Anthropic (Claude)"
+                "claude": "Anthropic (Claude)",
+                "gemini": "Google (Gemini)",
+                "deepseek": "DeepSeek AI"
             },
             default: "openai",
             restricted: true

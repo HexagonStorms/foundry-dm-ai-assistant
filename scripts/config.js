@@ -23,10 +23,14 @@ class AIDMConfig extends FormApplication {
             locations: game.settings.get(AIDMAssistant.ID, AIDMAssistant.SETTINGS.LOCATIONS),
             openaiKey: game.settings.get(AIDMAssistant.ID, AIDMAssistant.SETTINGS.OPENAI_KEY),
             anthropicKey: game.settings.get(AIDMAssistant.ID, AIDMAssistant.SETTINGS.ANTHROPIC_KEY),
+            googleKey: game.settings.get(AIDMAssistant.ID, AIDMAssistant.SETTINGS.GOOGLE_KEY),
+            deepseekKey: game.settings.get(AIDMAssistant.ID, AIDMAssistant.SETTINGS.DEEPSEEK_KEY),
             maxTokens: game.settings.get(AIDMAssistant.ID, AIDMAssistant.SETTINGS.MAX_TOKENS),
             creativity: game.settings.get(AIDMAssistant.ID, AIDMAssistant.SETTINGS.DEFAULT_CREATIVITY),
             isOpenAI: modelProvider === "openai",
-            isClaude: modelProvider === "claude"
+            isClaude: modelProvider === "claude",
+            isGemini: modelProvider === "gemini",
+            isDeepSeek: modelProvider === "deepseek"
         };
     }
 
@@ -57,6 +61,12 @@ class AIDMConfig extends FormApplication {
                     break;
                 case 'anthropic-api-key':
                     settingKey = AIDMAssistant.SETTINGS.ANTHROPIC_KEY;
+                    break;
+                case 'google-api-key':
+                    settingKey = AIDMAssistant.SETTINGS.GOOGLE_KEY;
+                    break;
+                case 'deepseek-api-key':
+                    settingKey = AIDMAssistant.SETTINGS.DEEPSEEK_KEY;
                     break;
                 case 'max-tokens':
                     settingKey = AIDMAssistant.SETTINGS.MAX_TOKENS;

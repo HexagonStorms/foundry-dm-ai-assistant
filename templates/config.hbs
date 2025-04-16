@@ -42,6 +42,8 @@
                     <select name="model-provider">
                         <option value="openai" {{#if isOpenAI}}selected{{/if}}>OpenAI (GPT)</option>
                         <option value="claude" {{#if isClaude}}selected{{/if}}>Anthropic (Claude)</option>
+                        <option value="gemini" {{#if isGemini}}selected{{/if}}>Google (Gemini)</option>
+                        <option value="deepseek" {{#if isDeepSeek}}selected{{/if}}>DeepSeek AI</option>
                     </select>
                 </div>
                 <p class="notes">Select which AI model provider to use for generating content.</p>
@@ -61,6 +63,22 @@
                     <input type="password" name="anthropic-api-key" value="{{anthropicKey}}" />
                 </div>
                 <p class="notes">Your Anthropic API key for Claude models. Keep this private and do not share it.</p>
+            </div>
+            
+            <div class="form-group api-key-group" data-provider="gemini">
+                <label>Google API Key</label>
+                <div class="form-fields">
+                    <input type="password" name="google-api-key" value="{{googleKey}}" />
+                </div>
+                <p class="notes">Your Google API key for Gemini models. Keep this private and do not share it.</p>
+            </div>
+            
+            <div class="form-group api-key-group" data-provider="deepseek">
+                <label>DeepSeek API Key</label>
+                <div class="form-fields">
+                    <input type="password" name="deepseek-api-key" value="{{deepseekKey}}" />
+                </div>
+                <p class="notes">Your DeepSeek API key. Keep this private and do not share it.</p>
             </div>
             
             <div class="form-group">

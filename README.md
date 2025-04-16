@@ -23,7 +23,7 @@ A Foundry VTT module that integrates AI capabilities to help Dungeon Masters gen
 - NPC generation
 - Item generation
 - Character generation
-- Support for additional AI providers (Anthropic/Claude, Google)
+- Support for additional AI providers (Deepseek, Google)
 - Enhanced multi-user support via socket communication
 - Further document type support (Scenes, Macros, etc.)
 - loading indicators
