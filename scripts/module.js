@@ -54,20 +54,18 @@ Hooks.on('getSceneControlButtons', (controls) => {
               new AIDMConfig().render(true);
           }
       }, {
-          name: 'create-npc',
-          title: 'Generate NPC',
-          icon: 'fas fa-user',
+          name: 'ai-create',
+          title: 'Create',
+          icon: 'fas fa-magic',
           button: true,
-          onClick: () => {
-              // TODO: Create NPC generation dialog
-          }
-      }, {
-          name: 'create-item',
-          title: 'Generate Item',
-          icon: 'fas fa-crown',
-          button: true,
-          onClick: () => {
-              // TODO: Create item generation dialog
+          onClick: async () => {
+              try {
+                  await CreationOptionsDialog.create();
+              } catch (error) {
+                  if (error.message !== "Cancelled" && error.message !== "Closed") {
+                      ui.notifications.error(error.message);
+                  }
+              }
           }
       }]
   });
@@ -78,7 +76,7 @@ Hooks.on('renderJournalDirectory', (app, html, data) => {
   if (!game.user.isGM) return;
 
   const button = $(`<button class="ai-assist-btn">
-      <i class="fas fa-robot"></i> AI Create
+      <i class="fas fa-magic"></i> Create
   </button>`);
   
   button.click(async () => {
