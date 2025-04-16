@@ -6,6 +6,8 @@ A Foundry VTT module that integrates AI capabilities to help Dungeon Masters gen
 
 - OpenAI API integration (GPT-4) for content generation
 - ClaudeAI API integration
+- Gemini integration (untested)
+- Deepseek integration (untested)
 - Configurable world context management with sections for:
   - World overview
   - Major factions
@@ -23,8 +25,6 @@ A Foundry VTT module that integrates AI capabilities to help Dungeon Masters gen
 - NPC generation
 - Item generation
 - Character generation
-- Support for additional AI providers (Deepseek, Google)
-- Enhanced multi-user support via socket communication
 - Further document type support (Scenes, Macros, etc.)
 - loading indicators
 - token usage stats
@@ -32,4 +32,4 @@ A Foundry VTT module that integrates AI capabilities to help Dungeon Masters gen
 ## Requirements
 
 - Foundry VTT v12+
-- OpenAI API key
+- An LLM model API key
