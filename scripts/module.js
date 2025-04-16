@@ -81,7 +81,7 @@ Hooks.on('renderJournalDirectory', (app, html, data) => {
   
   button.click(async () => {
       try {
-          await CreationOptionsDialog.create();
+          await JournalGenerationDialog.create();
       } catch (error) {
           if (error.message !== "Cancelled" && error.message !== "Closed") {
               ui.notifications.error(error.message);
