@@ -33,6 +33,44 @@
     color: #666;
 }
 
+/* AI Settings Tab */
+.aidm-config .form-group {
+    margin: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+}
+
+.aidm-config .form-header {
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 5px;
+}
+
+.aidm-config .form-fields {
+    display: flex;
+    align-items: center;
+}
+
+.aidm-config .range-value {
+    min-width: 40px;
+    text-align: center;
+    margin-left: 8px;
+}
+
+.aidm-config input[type="range"] {
+    flex: 1;
+}
+
+.aidm-config .api-key-group {
+    transition: opacity 0.3s ease;
+}
+
+.aidm-config .api-key-group input[type="password"] {
+    font-family: monospace;
+    letter-spacing: 2px;
+    width: 100%;
+}
+
 .aidm-config .sheet-footer {
     margin-top: 8px;
     gap: 8px;

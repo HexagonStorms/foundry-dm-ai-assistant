@@ -104,7 +104,7 @@ class JournalGenerationDialog extends Dialog {
                                 
                                 ui.notifications.info("Generating content...");
                                 
-                                const content = await OpenAIAPI.generateContent(prompt, useContext);
+                                const content = await AIAPI.generateContent(prompt, useContext);
                                 
                                 if (!content) {
                                     throw new Error("Failed to generate content");

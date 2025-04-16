@@ -5,6 +5,7 @@
         <a class="item" data-tab="npcs"><i class="fas fa-user"></i> NPCs</a>
         <a class="item" data-tab="plots"><i class="fas fa-book-open"></i> Plots</a>
         <a class="item" data-tab="locations"><i class="fas fa-map-marker-alt"></i> Locations</a>
+        <a class="item" data-tab="ai-settings"><i class="fas fa-robot"></i> AI Settings</a>
     </nav>
 
     <section class="content">
@@ -31,6 +32,54 @@
         <div class="tab" data-tab="locations" data-group="primary">
             <p class="notes">Describe important locations, cities, dungeons, and other places of interest.</p>
             <textarea name="locations" rows="20">{{locations}}</textarea>
+        </div>
+
+        <div class="tab" data-tab="ai-settings" data-group="primary">
+            <h3 class="form-header">AI Service Configuration</h3>
+            <div class="form-group">
+                <label>AI Model Provider</label>
+                <div class="form-fields">
+                    <select name="model-provider">
+                        <option value="openai" {{#if isOpenAI}}selected{{/if}}>OpenAI (GPT)</option>
+                        <option value="claude" {{#if isClaude}}selected{{/if}}>Anthropic (Claude)</option>
+                    </select>
+                </div>
+                <p class="notes">Select which AI model provider to use for generating content.</p>
+            </div>
+            
+            <div class="form-group api-key-group" data-provider="openai">
+                <label>OpenAI API Key</label>
+                <div class="form-fields">
+                    <input type="password" name="openai-api-key" value="{{openaiKey}}" />
+                </div>
+                <p class="notes">Your OpenAI API key. Keep this private and do not share it.</p>
+            </div>
+            
+            <div class="form-group api-key-group" data-provider="claude">
+                <label>Anthropic API Key</label>
+                <div class="form-fields">
+                    <input type="password" name="anthropic-api-key" value="{{anthropicKey}}" />
+                </div>
+                <p class="notes">Your Anthropic API key for Claude models. Keep this private and do not share it.</p>
+            </div>
+            
+            <div class="form-group">
+                <label>Response Length (Tokens)</label>
+                <div class="form-fields">
+                    <input type="range" name="max-tokens" value="{{maxTokens}}" min="100" max="2000" step="100" />
+                    <span class="range-value">{{maxTokens}}</span>
+                </div>
+                <p class="notes">Maximum length of AI responses in tokens (100-2000).</p>
+            </div>
+            
+            <div class="form-group">
+                <label>Creativity Level</label>
+                <div class="form-fields">
+                    <input type="range" name="default-creativity" value="{{creativity}}" min="0" max="100" step="5" />
+                    <span class="range-value">{{creativity}}</span>
+                </div>
+                <p class="notes">Adjust creativity level of AI responses (0-100).</p>
+            </div>
         </div>
     </section>
 
