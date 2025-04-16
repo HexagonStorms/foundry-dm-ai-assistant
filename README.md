@@ -5,6 +5,7 @@ A Foundry VTT module that integrates AI capabilities to help Dungeon Masters gen
 ## Current Features
 
 - OpenAI API integration (GPT-4) for content generation
+- ClaudeAI API integration
 - Configurable world context management with sections for:
   - World overview
   - Major factions
