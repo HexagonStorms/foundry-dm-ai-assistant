@@ -17,7 +17,12 @@
   ],
   "scripts": [
     "scripts/settings.js",
-    "scripts/api.js", 
+    "scripts/api/AIAPI.js",
+    "scripts/api/OpenAIAPI.js",
+    "scripts/api/ClaudeAPI.js",
+    "scripts/api/GeminiAPI.js",
+    "scripts/api/DeepSeekAPI.js",
+    "scripts/api.js",
     "scripts/config.js",
     "scripts/dialogs.js",
     "scripts/module.js"
