@@ -5,6 +5,10 @@ class ClaudeAPI {
             ui.notifications.error("Anthropic API key not configured");
             return null;
         }
+        
+        // Notify user about potential CORS limitations
+        ui.notifications.warn("Note: Claude API may have CORS limitations in browser environments. If you encounter errors, try another provider.");
+        console.warn("Claude API may have CORS limitations in browser environments.");
 
         // Get world context if needed
         let worldContext = "";
@@ -18,6 +22,8 @@ class ClaudeAPI {
         Request: ${prompt} Please format your response in a way that can be used as a journal entry.`;
 
         try {
+            // Note: Direct API calls to Anthropic might face CORS issues in browser environments
+            // Ideally, this should be proxied through a server-side endpoint
             const response = await fetch('https://api.anthropic.com/v1/messages', {
                 method: 'POST',
                 headers: {
@@ -59,8 +65,14 @@ class ClaudeAPI {
             
             return formattedContent;
         } catch (error) {
-            ui.notifications.error("Error generating content: " + error.message);
-            console.error("Claude API Error:", error);
+            // Check if this is a CORS error
+            if (error.message.includes("CORS") || error.message.includes("Failed to fetch")) {
+                ui.notifications.error("Claude API Error: CORS policy issue. Try using a different model provider.");
+                console.error("Claude API CORS Error:", error);
+            } else {
+                ui.notifications.error("Error generating content: " + error.message);
+                console.error("Claude API Error:", error);
+            }
             return null;
         }
     }
