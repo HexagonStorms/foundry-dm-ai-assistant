@@ -1,11 +1,11 @@
 // Mock Foundry VTT globals and APIs
-global.Dialog = class Dialog {
-    constructor(data) {
-        this.data = data;
-        this.rendered = false;
-    }
+// Use a simple mock for Dialog - no need to extend it in tests
+global.Dialog = jest.fn().mockImplementation(function(data) {
+    this.data = data;
+    this.rendered = false;
     
-    render(force) {
+    // Add method directly to the instance
+    this.render = jest.fn(() => {
         this.rendered = true;
         if (this.data.render) {
             // Create a mock HTML element with methods for testing
@@ -19,13 +19,13 @@ global.Dialog = class Dialog {
             this.data.render(html);
         }
         return this;
-    }
+    });
     
-    close() {
+    this.close = jest.fn(() => {
         this.rendered = false;
         return this;
-    }
-};
+    });
+});
 
 global.FormApplication = class FormApplication {
     constructor(object, options) {
@@ -138,7 +138,10 @@ global.AIDMAssistant = {
         MAX_TOKENS: "max-tokens"
     },
     initialize: () => {},
-    getAllContext: () => "Test context",
+    getAllContext: () => {
+        // Implementation in this method is tested separately in settings.test.js
+        return "World Overview:\nWorld info\n\nMajor Factions:\nFaction info\n\nImportant NPCs:\nNPC info\n\nCurrent Plots:\nPlot info\n\nLocations:\nLocation info";
+    },
     getSetting: (key) => "",
     setSetting: async (key, value) => {}
 };

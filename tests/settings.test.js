@@ -1,4 +1,8 @@
 describe('AIDMAssistant', () => {
+    // Save original methods
+    const originalGetSetting = global.AIDMAssistant.getSetting;
+    const originalSetSetting = global.AIDMAssistant.setSetting;
+    
     beforeEach(() => {
         // Reset mocks before each test
         jest.clearAllMocks();
@@ -8,6 +12,22 @@ describe('AIDMAssistant', () => {
         global.game.settings.set = jest.fn().mockResolvedValue(undefined);
         global.game.settings.register = jest.fn();
         global.game.settings.registerMenu = jest.fn();
+        
+        // Override AIDMAssistant methods to use the actual implementation
+        // but with our mocked game.settings functions
+        global.AIDMAssistant.getSetting = function(key) {
+            return game.settings.get(this.ID, key);
+        };
+        
+        global.AIDMAssistant.setSetting = async function(key, value) {
+            return await game.settings.set(this.ID, key, value);
+        };
+    });
+    
+    // Cleanup after tests
+    afterEach(() => {
+        global.AIDMAssistant.getSetting = originalGetSetting;
+        global.AIDMAssistant.setSetting = originalSetSetting;
     });
 
     test('getSetting should call game.settings.get with correct parameters', () => {
@@ -38,7 +58,7 @@ describe('AIDMAssistant', () => {
         
         const result = AIDMAssistant.getAllContext();
         
-        // Verify the result contains expected sections
+        // Match the correct formatting from the implementation
         expect(result).toContain("World Overview:\nWorld info");
         expect(result).toContain("Major Factions:\nFaction info");
         expect(result).toContain("Important NPCs:\nNPC info");

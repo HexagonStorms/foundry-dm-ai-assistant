@@ -48,7 +48,7 @@ npm install
 npm test
 
 # Run tests with coverage
-npm test -- --coverage
+npm test --coverage
 
 # Run specific test file
 npm test -- tests/api.test.js
