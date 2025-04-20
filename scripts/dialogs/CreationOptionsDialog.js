@@ -39,9 +39,11 @@ class CreationOptionsDialog extends Dialog {
                                 case 'journal':
                                     await JournalGenerationDialog.create();
                                     break;
+                                case 'item':
+                                    await ItemGenerationDialog.create();
+                                    break;
                                 case 'npc':
                                 case 'character':
-                                case 'item':
                                     ui.notifications.info(`${type.charAt(0).toUpperCase() + type.slice(1)} generation coming soon!`);
                                     break;
                                 default:

@@ -25,7 +25,8 @@
     "scripts/api.js",
     "scripts/config.js",
     "scripts/dialogs/CreationOptionsDialog.js",
-    "scripts/dialogs/JournalGenerationDialog.js", 
+    "scripts/dialogs/JournalGenerationDialog.js",
+    "scripts/dialogs/ItemGenerationDialog.js", 
     "scripts/dialogs/index.js",
     "scripts/module.js"
 ],

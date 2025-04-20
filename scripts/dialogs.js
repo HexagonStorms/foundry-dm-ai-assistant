@@ -3,3 +3,4 @@
 // See:
 // - scripts/dialogs/CreationOptionsDialog.js
 // - scripts/dialogs/JournalGenerationDialog.js
+// - scripts/dialogs/ItemGenerationDialog.js

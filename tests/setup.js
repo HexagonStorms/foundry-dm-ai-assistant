@@ -64,6 +64,14 @@ global.JournalEntry = {
     })
 };
 
+global.Item = {
+    create: async (data) => ({
+        sheet: {
+            render: () => {}
+        }
+    })
+};
+
 global.CONST = {
     DOCUMENT_OWNERSHIP_LEVELS: {
         NONE: 0,
@@ -158,3 +166,30 @@ global.AIAPI = {
 
 // Make sure global classes are available
 global.AIDMConfig = require('../scripts/config.js');
+
+// Include dialog classes
+global.ItemGenerationDialog = class ItemGenerationDialog {
+    static async create() {
+        return new Promise((resolve, reject) => {
+            new Dialog({
+                title: "Generate Item",
+                buttons: {
+                    generate: {
+                        callback: async (html) => {
+                            try {
+                                const content = await AIAPI.generateContent("Test prompt", true);
+                                const item = await Item.create({
+                                    name: "Test Item",
+                                    type: "weapon"
+                                });
+                                resolve(item);
+                            } catch (error) {
+                                reject(error);
+                            }
+                        }
+                    }
+                }
+            }).render(true);
+        });
+    }
+};
