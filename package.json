@@ -1,0 +1,19 @@
+{
+  "name": "ai-dm-assistant",
+  "version": "1.0.0",
+  "description": "AI-powered assistant for Dungeon Masters using Foundry VTT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFiles": ["./tests/setup.js"],
+    "moduleNameMapper": {
+      "^/scripts/(.*)$": "<rootDir>/scripts/$1"
+    }
+  }
+}

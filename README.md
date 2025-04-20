@@ -26,10 +26,32 @@ A Foundry VTT module that integrates AI capabilities to help Dungeon Masters gen
 - Item generation
 - Character generation
 - Further document type support (Scenes, Macros, etc.)
-- loading indicators
-- token usage stats
+- Loading indicators
+- Token usage stats
 
 ## Requirements
 
 - Foundry VTT v12+
 - An LLM model API key
+
+## Development
+
+### Running Unit Tests
+
+The module includes unit tests using Jest. To run the tests:
+
+```bash
+# Install dependencies (first time only)
+npm install
+
+# Run all tests
+npm test
+
+# Run tests with coverage
+npm test -- --coverage
+
+# Run specific test file
+npm test -- tests/api.test.js
+```
+
+The test setup mocks the Foundry VTT APIs, allowing for testing without a running Foundry instance.
