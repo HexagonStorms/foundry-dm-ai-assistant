@@ -24,7 +24,9 @@
     "scripts/api/DeepSeekAPI.js",
     "scripts/api.js",
     "scripts/config.js",
-    "scripts/dialogs.js",
+    "scripts/dialogs/CreationOptionsDialog.js",
+    "scripts/dialogs/JournalGenerationDialog.js", 
+    "scripts/dialogs/index.js",
     "scripts/module.js"
 ],
   "styles": [
